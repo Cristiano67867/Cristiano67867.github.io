@@ -1,0 +1,100 @@
+<html>
+  <head>
+    <title>Calculadora de IMC</title>
+    <style>
+      body{
+        background: #4e58e59f;
+      }
+      
+      section{
+        box-shadow: 0px 10px 10px 0px black;
+        padding: 10px;
+        border-radius: 10px;
+      }
+      
+      input#Peso{
+        border-radius: 10px;
+        height: 8%;
+        outline: 0;
+        padding: 10px;
+        width: 90%;
+        margin-bottom: 30px;
+      }
+      input#altura{
+        border-radius: 10px;
+        height: 8%;
+        outline: 0;
+        padding: 10px;
+        width: 90%;
+      }
+      
+      label{
+        margin-bottom: 15px;
+        font: normal 19pt Arial;
+      }
+      
+      header{
+        font: normal 18pt Arial;
+        text-align: center;
+      }
+      
+      button{
+        border-radius: 10px;
+        height: 8%;
+        width: 40%;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>IMC</h1>
+    </header>
+    <section>
+      <div>
+        <label>Peso:<br></label>
+        <input id="peso" type="number" placeholder="peso"><br>
+        <label>Altura:<br></label>
+        <input id="altura" type="number" placeholder="altura">
+        <p>
+          <button id="calcular" onclick="calcular()">Calcular</button>
+          <button id="view" onclick="view()">Ver a formula</button>
+        </p>
+        
+        <h1 id="h1"></h1>
+      </div>
+      <div id="formula">
+        <h1>Formula</h1>
+      </div>
+    </section>
+    
+    <script>
+      function calcular(){
+        var peso = document.getElementById("peso").value
+        var altura = document.getElementById("altura").value
+        
+if(peso.length == 0 && altura.length == 0){
+  alert("Pofavor digite os dados!")
+}else{
+  if(altura.length == 0){
+    alert("Pofavor digite a altura!")
+  }else{
+    altura *= altura
+  }
+  if(peso.length == 0){
+    alert("Pofavor digite o peso!")
+  }
+  
+      var IMC = peso / altura
+  document.getElementById("h1").innerHTML = IMC
+}        
+      }
+  
+      function view(){
+        var alturas = `${altura.value * altura.value}`
+        
+        document.getElementById("formula").innerHTML = `<h1>Formula</h1><br>IMC = ${peso.value} : (${altura.value} x ${altura.value})<br>IMC = ${peso.value} : ${alturas}<br>IMC = ${peso.value / alturas}`
+      }
+    </script>
+  </body>
+</html>
